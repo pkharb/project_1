@@ -7,10 +7,9 @@ const
     mongoose = require('mongoose'),
     mongooseConnectionString = process.env.MONGOD_URI;
 
-// mongoose connection
-mongoose.connect(mongooseConnectionString, err => {
-    console.log(err || `Connected to MLab (Project_1)`);
-});
+// database connection
+require('./db');
+
 
 
 // listen to port
