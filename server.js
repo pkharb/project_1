@@ -10,6 +10,12 @@ const
 // database connection
 require('./db');
 
+// middleware
+
+// routes
+const profileRouter = require('./routers/profileRouter');
+app.use('/user/profile', profileRouter);
+
 
 
 // listen to port
