@@ -3,9 +3,9 @@ require('dotenv').config();
 const
     express = require('express'),
     app = express(),
-    PORT = 3000,
+    PORT = process.env.PORT || 3000,
     mongoose = require('mongoose'),
-    mongooseConnectionString = 'mongodb://admin:assembly1234@ds135704.mlab.com:35704/project_1';
+    mongooseConnectionString = process.env.MONGOD_URI;
 
 // mongoose connection
 mongoose.connect(mongooseConnectionString, err => {
