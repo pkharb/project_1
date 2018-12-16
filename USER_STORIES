@@ -1,0 +1,34 @@
+USER STORIES:
+
+SIGN-IN
+1) Background Image
+2) Sign-in panel, for the user to type in the username and password, with a sign-in button
+
+SIGN-UP
+1) Background Image
+2) Sign-up panel, for the user to CREATE a new account, with a name, email, password field and a sign-up button
+
+EDIT PROFILE
+1) Page Title - Edit Profile
+2) Menu (options: Your Profile, Edit Profile, Delete Profile, Goals, Sign out)
+3) Panel with all the fields populated with user's info, the user can change the info and press the edit profile button to UPDATE the changes
+4) Background Image
+
+DELETE PROFILE
+1) Page Title - Delete Profile
+2) Menu (options: Your Profile, Edit Profile, Delete Profile, Goals, Sign out)
+3) A warning message to alert user that pressing the delete button will delete the account and all the data saved in it. And a Delete Profile button.
+4) Background Image
+
+PROFILE
+1) Page Title - Profile
+2) Menu (options: Your Profile, Edit Profile, Delete Profile, Goals, Sign out)
+3) Display Picture
+4) Edit Profile Button
+5) Blog
+6) User details
+
+GOALS
+1) Page Title - Goals
+2) Menu (options: Your Profile, Edit Profile, Delete Profile, Goals, Sign out)
+3) Individual goals with detailed information about each goal
