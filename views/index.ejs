@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Welcome to the EITS (Eye In The Sky)</title>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<% if (loggedIn) { %>
-		<h1>Welcome Message</h1>
-	<% } %>
-	<div class="container">
-		<%- body %>
-	</div>
-</body>
-</html>
+
+<div class="jumbotron">
+	<h1 class="display-4">TIE (The Impower Eye)</h1>
+	<p class="lead">GET MORE OUT OF LIFE</p>
+	<hr class="my-4">
+	<p>TIE will help you make your life more productive, keeps you on the right track.</p>
+	<a class="btn btn-primary btn-lg" href="/users/login" role="button">Log In</a>
+	<a class="btn btn-primary btn-lg" href="/users/signup" role="button">Sign Up</a>
+</div>
