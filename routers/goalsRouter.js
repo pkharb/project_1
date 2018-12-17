@@ -7,5 +7,6 @@ const
 router.post('/', Goal.create);
 router.get('/', Goal.index);
 router.get('/:id', Goal.show);
+router.patch('/:id', Goal.update);
 
 module.exports = router;

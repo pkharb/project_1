@@ -18,5 +18,11 @@ module.exports = {
             if (err) res.json({ success: false, err});
             res.json({ success: true, goal});
         })
+    },
+    update: (req, res) => {
+        Goal.findByIdAndUpdate(req.params.id, req.body, (err, updatedGoal) => {
+            if (err) res.json({ success: false, err});
+            res.json({ success: true, updatedGoal});
+        })
     }
 }
