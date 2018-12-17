@@ -27,7 +27,7 @@ module.exports = {
         Profile.findByIdAndUpdate(req.params.id, req.body, (err, updatedProfile) => {
             
             if (err) res.json({ success: false , err});
-                     res.json({ success: true, updatedProfile});
+            res.json({ success: true, updatedProfile});
         });
         
     },
