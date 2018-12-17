@@ -22,5 +22,13 @@ module.exports = {
                      res.json({ success: true, profile});
         });
         
+    },
+    destroy: (req, res) => {
+        Profile.findByIdAndDelete(req.params.id, (err, deletedProfile) => {
+            
+            if (err) res.json({ success: false , err});
+                     res.json({ success: true, deletedProfile});
+        });
+        
     }
 }
