@@ -14,11 +14,10 @@ app.use(express.json());
 
 // routes
 const profileRouter = require('./routers/profileRouter');
+const goalsRouter = require('./routers/goalsRouter');
+
 app.use('/user/profile', profileRouter);
-
-
-
-
+app.use('user/goals', goalsRouter);
 
 
 // listen to port
