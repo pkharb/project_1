@@ -24,5 +24,11 @@ module.exports = {
             if (err) res.json({ success: false, err});
             res.json({ success: true, updatedGoal});
         })
+    },
+    destroy: (req, res) => {
+        Goal.findByIdAndDelete(req.params.id, (err, deletedGoal) => {
+            if (err) res.json({ success: false, err});
+            res.json({ success: true, deletedGoal});
+        })
     }
 }
