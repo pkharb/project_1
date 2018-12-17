@@ -12,5 +12,11 @@ module.exports = {
             if (err) res.json({ success: false, err});
             res.json({ success: true, goals});
         })
+    },
+    show: (req, res) => {
+        Goal.findById(req.params.id, (err, goal) => {
+            if (err) res.json({ success: false, err});
+            res.json({ success: true, goal});
+        })
     }
 }
