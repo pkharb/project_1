@@ -1,7 +1,7 @@
 const 
     express = require('express'),
-    router = express.Router(),
-    Goal = require('../controllers/goals');
+    Goal = require('../controllers/goals'),
+    router = express.Router();
 
 // routers
 router.post('/', Goal.create);
