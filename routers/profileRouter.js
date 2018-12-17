@@ -6,5 +6,6 @@ const
 // Profile router
 router.post('/', Profile.create);
 router.get('/', Profile.index);
+router.get('/:id', Profile.show);
 
 module.exports = router;

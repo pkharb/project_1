@@ -4,13 +4,13 @@ const
     express = require('express'),
     app = express(),
     PORT = process.env.PORT || 3000,
-    mongoose = require('mongoose'),
-    mongooseConnectionString = process.env.MONGOD_URI;
+    mongoose = require('mongoose');
 
 // database connection
 require('./db');
 
 // middleware
+app.use(express.json());
 
 // routes
 const profileRouter = require('./routers/profileRouter');

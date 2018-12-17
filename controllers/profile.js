@@ -14,5 +14,13 @@ module.exports = {
                      res.json({ success: true, newProfile});
         });
         
+    },
+    show: (req, res) => {
+        Profile.findById(req.params.id, (err, profile) => {
+            
+            if (err) res.json({ success: false , err});
+                     res.json({ success: true, profile});
+        });
+        
     }
 }
