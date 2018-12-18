@@ -20,8 +20,9 @@ const
     
 // });
 
-goalsRouter.get('/goals', goals.index);
-goalsRouter.post('/goals', goals.create);
+goalsRouter.get('/goals', isLoggedIn, goals.index);
+goalsRouter.post('/goals', isLoggedIn, goals.create);
+goalsRouter.get('/goals/creategoal', isLoggedIn, goals.show);
 
 
 
@@ -48,6 +49,11 @@ goalsRouter.post('/goals', goals.create);
 //     if (req.isAuthenticated()) return next();
 //     res.redirect('/users/login');
 // };
+
+function isLoggedIn(req, res, next){
+    if (req.isAuthenticated()) return next();
+    res.redirect('/users/login');
+};
 
 module.exports = goalsRouter;
 

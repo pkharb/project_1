@@ -16,10 +16,11 @@ module.exports = {
         
     },
     show: (req, res) => {
-        Goal.findById(req.params.id, (err, profile) => {
+        Goal.findById(req.params.id, (err, goal) => {
             
             if (err) res.json({ success: false , err});
-                     res.json({ success: true, profile});
+                    //  res.json({ success: true, profile});
+            res.render('createGoal', { success: true, goal});
         });
         
     },
@@ -40,3 +41,8 @@ module.exports = {
         
     }
 }
+
+function isLoggedIn(req, res, next){
+    if (req.isAuthenticated()) return next();
+    res.redirect('/users/login');
+};
