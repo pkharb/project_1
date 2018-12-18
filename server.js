@@ -15,10 +15,12 @@ const
     passportConfig = require('./services/auth'),
     methodOverride = require('method-override'),
     mongoConnectionString = process.env.MONGOD_URI,
-    userRouter = require('./routers/userRouter.js');
+    usersRouter = require('./routers/users.js');
 
 // database connection
-require('./db');
+mongoose.connect(mongoConnectionString, { useNewUrlParser: true }, err => {
+    console.log(err || `Connected to MLab (Project_1)`);
+});
 
 // store session information as a 'sessions' collection in Mongo
 const store = new MongoDBStore({
@@ -60,12 +62,7 @@ app.get('/', (req,res) => {
     res.render('index');
 });
 
-
-
-// routes
-// const goalsRouter = require('./routers/goalsRouter');
-
-app.use('/user', userRouter);
+app.use('/users', usersRouter);
 // app.use('/user/goals', goalsRouter);
 
 

@@ -1,66 +1,66 @@
 const
     express = require('express'),
-    userRouter = new express.Router(),
+    usersRouter = new express.Router(),
     passport = require('passport'),
     User = require('../models/user');
 
 // render login view
-userRouter.get('/login', (req, res) => {
+usersRouter.get('/login', (req, res) => {
     res.render('login');
 });
 
-userRouter.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/user/profile',
-    failureRedirect: '/user/login'
+usersRouter.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/users/profile',
+    failureRedirect: '/users/login'
 }));
 
 // render signup view
-userRouter.get('/signup', (req, res) => {
+usersRouter.get('/signup', (req, res) => {
     res.render('signup', { message: req.flash('/Signup_message') });
 });
-userRouter.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/user/profile',
-    failureRedirect: '/user/signup'
+usersRouter.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/users/profile',
+    failureRedirect: '/users/signup'
 }));
 
-userRouter.get('/user', isLoggedIn, (req, res) => {
+usersRouter.get('/profile', isLoggedIn, (req, res) => {
     // thisProf = req.user
     res.render('profile', { user: req.user});
     // render the user profile only when user is logged in
 });
 
-userRouter.patch('/profile', isLoggedIn, (req, res) => {
+usersRouter.patch('/profile', isLoggedIn, (req, res) => {
     // check to see of the request body has a truthy password key(meaning user is trying to modify password)
     if (!req.body.password) delete req.body.password;
     Object.assign(req.user, req.body);
     req.user.save((err, updatedUser) => {
         if (err) console.log(err);
-        res.redirect('/user/profile');
+        res.redirect('/users/profile');
     });
 });
 
-userRouter.get('/user/delete', isLoggedIn, (req, res) => {
-    res.render('deleteuser');
+usersRouter.get('/profile/delete', isLoggedIn, (req, res) => {
+    res.render('deleteprofile');
 });
-userRouter.delete('/profile', isLoggedIn, (req, res) => {
+usersRouter.delete('/profile', isLoggedIn, (req, res) => {
     User.findByIdAndRemove(req.user._id,(err, deletedUser) => {
         if (err) return res.status(500).send(err);
-        res.redirect('/user/signup');
+        res.redirect('/users/signup');
     });
 });
 
-userRouter.get('/user/edit', isLoggedIn, (req, res) => {
-    res.render('editUser');
+usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
+    res.render('editProfile');
 });
 
-userRouter.get('/logout', (req, res) => {
+usersRouter.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
 
 function isLoggedIn(req, res, next){
     if (req.isAuthenticated()) return next();
-    res.redirect('/profile/login');
+    res.redirect('/users/login');
 };
 
-module.exports = userRouter;
+module.exports = usersRouter;

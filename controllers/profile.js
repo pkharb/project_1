@@ -1,4 +1,4 @@
-const Profile = require('../models/profile');
+const Profile = require('../models/user');
 
 module.exports = {
     index: (req, res) => {
