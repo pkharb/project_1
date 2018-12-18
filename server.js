@@ -4,20 +4,69 @@ const
     express = require('express'),
     app = express(),
     PORT = process.env.PORT || 3000,
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    ejsLayouts = require('express-ejs-layouts'),
+    flash = require('connect-flash'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    MongoDBStore = require('connect-mongodb-session')(session),
+    passport = require('passport'),
+    passportConfig = require('./services/auth'),
+    methodOverride = require('method-override'),
+    mongoConnectionString = process.env.MONGOD_URI,
+    profileRouter = require('./routers/profileRouter.js');
 
 // database connection
 require('./db');
 
+// store session information as a 'sessions' collection in Mongo
+const store = new MongoDBStore({
+    uri: mongoConnectionString,
+    collection: 'sessions'
+});
+
 // middleware
-app.use(express.json());
+app.use(logger('dev'));
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(flash());
+app.use(methodOverride('_method'));
+
+// ejs configuration
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
+
+app.use(session({
+    secret: 'abcde',
+    cookie: { maxAge: 60000000},
+    resave: true,
+    saveUninitialized: false,
+    store
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+    app.locals.currentUser = req.profile;
+    app.locals.loggedIn = !!req.profile;
+
+    next();
+});
+
+// root route
+app.get('/', (req,res) => {
+    res.render('index');
+});
+
+app.use('/user/profile', profileRouter)
 
 // routes
-const profileRouter = require('./routers/profileRouter');
 const goalsRouter = require('./routers/goalsRouter');
 
 app.use('/user/profile', profileRouter);
-app.use('/user/goals', goalsRouter);
+// app.use('/user/goals', goalsRouter);
 
 
 // listen to port
