@@ -1,10 +1,10 @@
 const 
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    Profile = require('../models/profile');
+    Profile = require('../models/user');
 
-passport.serializeUser((profile, done) => {
-    done(null, profile.id)
+passport.serializeUser((user, done) => {
+    done(null, user.id)
 });
 
 passport.deserializeUser((id, done) => {
@@ -19,13 +19,13 @@ passport.use('local-signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, (req, email, password, done) => {
-    Profile.findOne({ email }, (err, profile) => {
+    User.findOne({ email }, (err, user) => {
         if (err) return done(err);
-        if (profile) return done(null, false, req.flash('signup_message', 'This email is already taken'));
+        if (user) return done(null, false, req.flash('signup_message', 'This email is already taken'));
 
-        Profile.create(req.body, (err, newProfile) => {
+        User.create(req.body, (err, newUser) => {
             if (err) return console.log(err);
-            return done(null, newProfile, null);
+            return done(null, newUser, null);
         })
     })
     
@@ -37,11 +37,11 @@ passport.use('local-login', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, (req, email, password, done) => {
-    Profile.findOne({ email }, (err, profile) => {
+    User.findOne({ email }, (err, user) => {
         if (err) return done(err);
-        if (!profile || !profile.validPassword(password)) return done(null, false);
+        if (!user || !user.validPassword(password)) return done(null, false);
 
-        return done(null, profile);
+        return done(null, user);
     });
 }));
 

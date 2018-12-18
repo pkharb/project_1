@@ -2,13 +2,13 @@ const mongoose = require('mongoose'),
 bcrypt = require('bcrypt-nodejs');
 
 
-const profileSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String
 }, { timestamps:true });
 
-profileSchema.pre('save', function(next) {
+userSchema.pre('save', function(next) {
     const user = this;
     if (!user.isModified('password')) return next();
     bcrypt.genSalt(8, (err, salt) => {
@@ -21,10 +21,10 @@ profileSchema.pre('save', function(next) {
     })
 })
 
-profileSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 }
 
-const Profile = mongoose.model('Profile', profileSchema);
-module.exports = Profile;
+const User = mongoose.model('User', userSchema);
+module.exports = User;
 

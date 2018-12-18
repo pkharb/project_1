@@ -15,7 +15,7 @@ const
     passportConfig = require('./services/auth'),
     methodOverride = require('method-override'),
     mongoConnectionString = process.env.MONGOD_URI,
-    profileRouter = require('./routers/profileRouter.js');
+    userRouter = require('./routers/userRouter.js');
 
 // database connection
 require('./db');
@@ -49,8 +49,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-    app.locals.currentUser = req.profile;
-    app.locals.loggedIn = !!req.profile;
+    app.locals.currentUser = req.user;
+    app.locals.loggedIn = !!req.user;
 
     next();
 });
@@ -60,12 +60,12 @@ app.get('/', (req,res) => {
     res.render('index');
 });
 
-app.use('/user/profile', profileRouter)
+
 
 // routes
-const goalsRouter = require('./routers/goalsRouter');
+// const goalsRouter = require('./routers/goalsRouter');
 
-app.use('/user/profile', profileRouter);
+app.use('/user', userRouter);
 // app.use('/user/goals', goalsRouter);
 
 
