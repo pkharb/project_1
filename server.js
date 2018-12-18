@@ -15,7 +15,8 @@ const
     passportConfig = require('./services/auth'),
     methodOverride = require('method-override'),
     mongoConnectionString = process.env.MONGOD_URI,
-    usersRouter = require('./routers/users.js');
+    usersRouter = require('./routers/users.js'),
+    goalsRouter = require('./routers/goalsRouter.js');
 
 // database connection
 mongoose.connect(mongoConnectionString, { useNewUrlParser: true }, err => {
@@ -63,6 +64,7 @@ app.get('/', (req,res) => {
 });
 
 app.use('/users', usersRouter);
+app.use('/users/profile', goalsRouter)
 // app.use('/user/goals', goalsRouter);
 
 

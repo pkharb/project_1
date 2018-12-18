@@ -1,0 +1,23 @@
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4">GOALS</h1>
+		<p class="lead">
+			
+			<a href="/users/profile" class="btn btn-warning btn-sm">Go to your Profile</a>
+		</p>
+	</div>
+</div>
+
+<h2>All Goals</h2>
+
+    <% goals.forEach(e => { %>
+    <div class="card" style="margin-bottom: 2rem">
+        <h5>Name: <%= e.name%></h5>
+        <h5>Duration: <%= e.duration%></h5>
+        <h5>Cost: <%= e.cost%></h5>
+        <h5>Status: <%= e.status%></h5>
+    </div>
+    <% }) %>
+  
+
+
