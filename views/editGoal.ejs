@@ -1,0 +1,31 @@
+<div class="col-sm-6 offset-md-3">
+    <h1>Edit a Goal</h1>
+    <form method="post" action="/users/profile/goals/<%= goal.id%>?_method=PATCH">
+       
+      <div class="form-group">
+        <label for="name"> Name </label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= goal.name %>">
+      </div>
+      <div class="form-group">
+        <label for="duration"> Duration </label>
+        <input type="duration" class="form-control" id="duration" name="duration" value="<%= goal.duration %>">
+      </div>
+      <div class="form-group">
+        <label for="cost"> Cost </label>
+        <input type="cost" class="form-control" id="cost" name="cost" value="<%= goal.cost %>">
+      </div>
+      <div class="form-group">
+        <label for="status"> Status </label>
+        <input type="status" class="form-control" id="status" name="status" value="<%= goal.status %>">
+      </div>
+      
+      <a href="/users/profile/goals/<%= goal.id %>"><button type="submit" class="btn btn-primary">UPDATE</button></a>
+    </form>
+
+    
+        
+
+    <hr>
+    <p>Go back to your <a href="/users/profile">Profile</a></p>
+    <p>Go back to your <a href="/users/profile/goals">Goals</a></p>
+  </div>

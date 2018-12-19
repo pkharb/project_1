@@ -7,6 +7,9 @@ module.exports = {
             res.render('goals', { success: true, goals});
         })
     },
+    newgoal: (req, res) => {
+            res.render('creategoal');
+    },
     create: (req, res) => {
         Goal.create(req.body, (err, newGoal) => {
             
@@ -17,28 +20,33 @@ module.exports = {
     },
     show: (req, res) => {
         Goal.findById(req.params.id, (err, goal) => {
-            
+            console.log(goal);
             if (err) res.json({ success: false , err});
-                    //  res.json({ success: true, profile});
             res.render('createGoal', { success: true, goal});
+        });
+        
+    },
+    edit: (req, res) => {
+        Goal.findById(req.params.id, (err, goal) => {
+            console.log(goal);
+            if (err) res.json({ success: false , err});
+            res.render('editGoal', {goal} );
         });
         
     },
     update: (req, res) => {
         Goal.findByIdAndUpdate(req.params.id, req.body, (err, updatedProfile) => {
-            
+            console.log("hi")
             if (err) res.json({ success: false , err});
-            res.json({ success: true, updatedProfile});
+            res.redirect('/users/profile/goals');
         });
-        
     },
     destroy: (req, res) => {
-        Goal.findByIdAndDelete(req.params.id, (err, deletedProfile) => {
+        Goal.findByIdAndDelete(req.params.id, (err, deletedGoal) => {
             
-            if (err) res.json({ success: false , err});
-                     res.json({ success: true, deletedProfile});
+            if (err) res.json({ success: false});
+            res.redirect('/users/profile/goals');
         });
-        
     }
 }
 

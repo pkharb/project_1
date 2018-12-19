@@ -21,8 +21,12 @@ const
 // });
 
 goalsRouter.get('/goals', isLoggedIn, goals.index);
+goalsRouter.get('/goals/creategoal', isLoggedIn, goals.newgoal);
 goalsRouter.post('/goals', isLoggedIn, goals.create);
-goalsRouter.get('/goals/creategoal', isLoggedIn, goals.show);
+goalsRouter.get('/goals/:id', isLoggedIn, goals.show);
+goalsRouter.get('/goals/:id/edit', isLoggedIn, goals.edit);
+goalsRouter.patch('/goals/:id', isLoggedIn, goals.update);
+goalsRouter.delete('/goals/:id', isLoggedIn, goals.destroy);
 
 
 
