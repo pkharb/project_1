@@ -11,11 +11,14 @@
 
 <h2>All Your Goals</h2>
 <% goals.forEach(e => { %>
-    <div class="card" style="margin-bottom: 2rem">
-            <h5>Name: <%= e.name%></h5>
-            <h5>Duration: <%= e.duration%></h5>
-            <h5>Cost: <%= e.cost%></h5>
-            <h5>Status: <%= e.status%></h5>
+    <div class="card" style="margin-bottom: 2rem; padding: 5%;">
+            <h5>Name: <%= e.name%> </h5>
+            <h5>Duration: <%= e.duration%> </h5>
+            <h5>Cost: <%= e.cost%> </h5>
+            <h5>Status: <%= e.status%> </h5>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= e.status%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= e.status%>%</div>
+            </div>
             <div>
                 <a href="/users/profile/goals/<%= e.id %>/edit"><button type="submit" class="btn btn-primary">EDIT</button></a>
         <form method="post" action="/users/profile/goals/<%= e.id %>?_method=DELETE">
