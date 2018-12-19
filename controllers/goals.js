@@ -14,7 +14,7 @@ module.exports = {
         Goal.create(req.body, (err, newGoal) => {
             
             if (err) res.json({ success: false , err});
-            res.render('createGoal', { success: true, newGoal});
+            res.redirect('/users/profile/goals');
         });
         
     },
