@@ -41,13 +41,13 @@ usersRouter.get('/profile', isLoggedIn, (req, res) => {
         apiKey: 'd387655fed4f4541a7970fc4a8cc21f7'
       }).then(response => {
           myArticles = response;
-        // console.log(response);
+        console.log(response);
         // console.log(response.status);
         // console.log(response.totalResults);
         // console.log(response.articles[0].author);
         // console.log(response.articles[0].title);
         // console.log(response.articles[0].description);
-        // console.log(myArticles.articles[0].content);
+        console.log(myArticles.articles[0].url);
         res.render('profile', { user: req.user, myArticles});
     });
 });
