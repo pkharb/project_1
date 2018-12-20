@@ -11,6 +11,7 @@
   "author": "Pradeep Kharb",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^2.0.6",
@@ -23,6 +24,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.4.0",
     "morgan": "^1.9.1",
+    "newsapi": "^2.4.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   }

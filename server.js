@@ -16,7 +16,8 @@ const
     methodOverride = require('method-override'),
     mongoConnectionString = process.env.MONGOD_URI,
     usersRouter = require('./routers/users.js'),
-    goalsRouter = require('./routers/goalsRouter.js');
+    goalsRouter = require('./routers/goalsRouter.js'),
+    path = require('path');
 
 // database connection
 mongoose.connect(mongoConnectionString, { useNewUrlParser: true }, err => {
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(flash());
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'views')));
 
 // ejs configuration
 app.set('view engine', 'ejs');

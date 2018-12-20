@@ -2,7 +2,10 @@ const
     express = require('express'),
     usersRouter = new express.Router(),
     passport = require('passport'),
-    User = require('../models/user');
+    User = require('../models/user'),
+    axios = require('axios'),
+    NewsAPI = require('newsapi'),
+    newsapi = new NewsAPI('d387655fed4f4541a7970fc4a8cc21f7');
 
 // render login view
 usersRouter.get('/login', (req, res) => {
@@ -23,10 +26,38 @@ usersRouter.post('/signup', passport.authenticate('local-signup', {
     failureRedirect: '/users/signup'
 }));
 
+// render the user profile only when user is logged in
 usersRouter.get('/profile', isLoggedIn, (req, res) => {
+   let xx;
+    newsapi.v2.everything({
+        q: 'bitcoin',
+        sources: 'bbc-news,the-verge',
+        domains: 'bbc.co.uk, techcrunch.com',
+        from: '2018-11-25',
+        to: '2018-12-19',
+        language: 'en',
+        sortBy: 'relevancy',
+        page: 2,
+        apiKey: 'd387655fed4f4541a7970fc4a8cc21f7'
+      }).then(response => {
+          xx = response;
+        console.log(response);
+        console.log(response.status);
+        console.log(response.totalResults);
+        console.log(response.articles[0].author);
+        console.log(response.articles[0].title);
+        console.log(response.articles[0].description);
+        console.log(response.articles[0].content);
+      });
+      res.render('profile', { user: req.user, response: req.response});
+});
+
+// render info view
+usersRouter.get('/profile/info', isLoggedIn, (req, res) => {
     // thisProf = req.user
-    res.render('profile', { user: req.user});
+    res.render('info', { user: req.user});
     // render the user profile only when user is logged in
+      
 });
 
 usersRouter.patch('/profile', isLoggedIn, (req, res) => {
