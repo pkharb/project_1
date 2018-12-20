@@ -8,17 +8,17 @@
 </div>
 
 <h2 style="padding-bottom:10px;">Recent Articles</h2>
-
+<% myArticles.articles.forEach(e => { %>
 <div class="card" style="margin-bottom: 2rem; background: #9b1f69">
   <div class="card-body">
-    <h5 class="card-title">Title : <%= myArticles.articles[0].title %> </h5>
-    <h4 class="card-title"> <%= myArticles.articles[0].author %> </h5>
-      <img src="<%= myArticles.articles[0].urlToImage %>" alt="" style="padding-bottom:10px;">
-    <p class="card-text"><%= myArticles.articles[0].content %></p>
-    <a href="<%= myArticles.articles[0].url %>>" class="btn btn-primary">Read More</a>
+    <h5 class="card-title">Title : <%= e.title %> </h5>
+    <h4 class="card-title"> <%= e.author %> </h5>
+      <img src="<%= e.urlToImage %>" alt="" style="padding-bottom:10px;">
+    <p class="card-text"><%= e.content %></p>
+    <a href="<%= e.url %>>" class="btn btn-primary">Read More</a>
   </div>
 </div>
-
+<% }) %>
 <!-- <div class="card" style="margin-bottom: 2rem">
   <div class="card-body">
     <h5 class="card-title">Post Title</h5>
