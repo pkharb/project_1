@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     goals : [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'goals'
+        ref: 'Goal'
     }]
 }, { timestamps:true });
 

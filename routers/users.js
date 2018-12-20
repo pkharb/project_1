@@ -40,16 +40,16 @@ usersRouter.get('/profile', isLoggedIn, (req, res) => {
         page: 2,
         apiKey: 'd387655fed4f4541a7970fc4a8cc21f7'
       }).then(response => {
-          xx = response;
-        console.log(response);
-        console.log(response.status);
-        console.log(response.totalResults);
-        console.log(response.articles[0].author);
-        console.log(response.articles[0].title);
-        console.log(response.articles[0].description);
-        console.log(response.articles[0].content);
-      });
-      res.render('profile', { user: req.user, response: req.response});
+          myArticles = response;
+        // console.log(response);
+        // console.log(response.status);
+        // console.log(response.totalResults);
+        // console.log(response.articles[0].author);
+        // console.log(response.articles[0].title);
+        // console.log(response.articles[0].description);
+        // console.log(myArticles.articles[0].content);
+        res.render('profile', { user: req.user, myArticles});
+    });
 });
 
 // render info view

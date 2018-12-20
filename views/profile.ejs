@@ -8,11 +8,11 @@
 </div>
 
 <h2>Recent Articles</h2>
-<div class="card" style="margin-bottom: 2rem">
+<div class="card" style="margin-bottom: 2rem; background: #23222d">
   <div class="card-body">
-    <h5 class="card-title">Title : <%= response %> </h5>
-    <h4 class="card-title"> <%= response %> </h5>
-    <p class="card-text"><%= response %></p>
+    <h5 class="card-title">Title : <%= myArticles.articles[0].title %> </h5>
+    <h4 class="card-title"> <%= myArticles.articles[0].author %> </h5>
+    <p class="card-text"><%= myArticles.articles[0].content %></p>
     <a href="#" class="btn btn-primary">Read More</a>
   </div>
 </div>

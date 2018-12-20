@@ -1,4 +1,5 @@
-const Goal = require('../models/goals');
+const Goal = require('../models/goals'),
+      User = require('../models/user');
 
 module.exports = {
     index: (req, res) => {
@@ -12,7 +13,7 @@ module.exports = {
     },
     create: (req, res) => {
         Goal.create(req.body, (err, newGoal) => {
-            
+            console.log(User.goals);
             if (err) res.json({ success: false , err});
             res.redirect('/users/profile/goals');
         });
