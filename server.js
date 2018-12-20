@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(flash());
 app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public', 'views')));
 
 // ejs configuration
 app.set('view engine', 'ejs');

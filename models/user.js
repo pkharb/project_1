@@ -1,15 +1,13 @@
-const mongoose = require('mongoose'),
-bcrypt = require('bcrypt-nodejs');
-
+const 
+    mongoose = require('mongoose'),
+    bcrypt = require('bcrypt-nodejs'),
+    goalsSchema = require('./goals')
 
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-    goals : [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Goal'
-    }]
+    goals : [goalsSchema]
 }, { timestamps:true });
 
 userSchema.pre('save', function(next) {

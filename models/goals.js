@@ -4,10 +4,7 @@ const goalsSchema = new mongoose.Schema({
     name: String,
     duration: String,
     cost: String,
-    status: Number,
-    user: { type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' }
+    status: Number
 }, { timestamps: true });
 
-const Goal = mongoose.model('Goal', goalsSchema);
-module.exports = Goal;
+module.exports = goalsSchema;
