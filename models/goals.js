@@ -7,4 +7,5 @@ const goalsSchema = new mongoose.Schema({
     status: Number
 }, { timestamps: true });
 
-module.exports = goalsSchema;
+const Goal = mongoose.model('Goal', goalsSchema);
+module.exports = Goal;

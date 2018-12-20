@@ -12,21 +12,14 @@ module.exports = {
             res.render('creategoal');
     },
     create: (req, res) => {
-        // // Goal.create(req.body, (err, newGoal) => {
-        //     req.user.goals.push(newGoal._id)
-        //     console.log(req.user.goals);
-        //     // Object.assign(req.user.goals, req.body);
-        //     req.user.save((err, updatedUser) => {
-        //         if (err) console.log(err);
-        //         res.json({success: true, updatedUser});
-        //     });
-        //     G
-        //     // if (err) res.json({ success: false , err});
-        //     // res.redirect('/users/profile/goals');
-        // // });
-            Goal.create(req.body, (err, goal) => {
-                console.log('hey')
-            })
+        
+            
+        Goal.create(req.body, (err, newGoal) => {
+            
+            if (err) res.json({ success: false , err});
+            res.redirect('/users/profile/goals');
+        });
+           
         
     },
     show: (req, res) => {

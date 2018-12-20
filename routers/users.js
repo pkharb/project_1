@@ -28,7 +28,7 @@ usersRouter.post('/signup', passport.authenticate('local-signup', {
 
 // render the user profile only when user is logged in
 usersRouter.get('/profile', isLoggedIn, (req, res) => {
-   let xx;
+   let myArticles;
     newsapi.v2.everything({
         q: 'bitcoin',
         sources: 'bbc-news,the-verge',
