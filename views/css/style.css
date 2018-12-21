@@ -1,0 +1,11 @@
+body{
+    background: #181521; 
+    color: #fff;
+    background-image: url('https://i.imgur.com/7WEN7Ns.png'); 
+    background-size: cover;
+
+}
+
+.jumbotron{
+    background: #23222d;
+}
