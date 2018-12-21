@@ -9,7 +9,7 @@ module.exports = {
         })
     },
     newgoal: (req, res) => {
-            res.render('creategoal');
+            res.render('createGoal');
     },
     create: (req, res) => {
         

@@ -63,7 +63,7 @@ usersRouter.patch('/profile', isLoggedIn, (req, res) => {
 
 // render delete profile view
 usersRouter.get('/profile/delete', isLoggedIn, (req, res) => {
-    res.render('deleteprofile');
+    res.render('deleteProfile');
 });
 
 // delete profile 
