@@ -19,7 +19,7 @@ usersRouter.post('/login', passport.authenticate('local-login', {
 
 // render signup view
 usersRouter.get('/signup', (req, res) => {
-    res.render('signup', { message: req.flash('/Signup_message') });
+    res.render('signup', { message: req.flash('Welcome to TIE') });
 });
 usersRouter.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/users/profile',
@@ -41,25 +41,16 @@ usersRouter.get('/profile', isLoggedIn, (req, res) => {
         apiKey: 'd387655fed4f4541a7970fc4a8cc21f7'
       }).then(response => {
           myArticles = response;
-        console.log(response);
-        // console.log(response.status);
-        // console.log(response.totalResults);
-        // console.log(response.articles[0].author);
-        // console.log(response.articles[0].title);
-        // console.log(response.articles[0].description);
-        console.log(myArticles.articles[0].url);
         res.render('profile', { user: req.user, myArticles});
     });
 });
 
-// render info view
-usersRouter.get('/profile/info', isLoggedIn, (req, res) => {
-    // thisProf = req.user
-    res.render('info', { user: req.user});
-    // render the user profile only when user is logged in
-      
+// render edit profile view
+usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
+    res.render('editProfile');
 });
 
+// edit user profile
 usersRouter.patch('/profile', isLoggedIn, (req, res) => {
     // check to see of the request body has a truthy password key(meaning user is trying to modify password)
     if (!req.body.password) delete req.body.password;
@@ -70,9 +61,12 @@ usersRouter.patch('/profile', isLoggedIn, (req, res) => {
     });
 });
 
+// render delete profile view
 usersRouter.get('/profile/delete', isLoggedIn, (req, res) => {
     res.render('deleteprofile');
 });
+
+// delete profile 
 usersRouter.delete('/profile', isLoggedIn, (req, res) => {
     User.findByIdAndRemove(req.user._id,(err, deletedUser) => {
         if (err) return res.status(500).send(err);
@@ -80,9 +74,7 @@ usersRouter.delete('/profile', isLoggedIn, (req, res) => {
     });
 });
 
-usersRouter.get('/profile/edit', isLoggedIn, (req, res) => {
-    res.render('editProfile');
-});
+
 
 usersRouter.get('/logout', (req, res) => {
     req.logout();

@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid" style="background: #23222d;">
+<div class="jumbotron jumbotron-fluid">
 	<div class="container">
 		<h1 class="display-4">Welcome <%= user.name %> !</h1>
 		<p class="lead">
@@ -13,23 +13,9 @@
   <div class="card-body">
     <h5 class="card-title">Title : <%= e.title %> </h5>
     <h4 class="card-title"> <%= e.author %> </h5>
-      <img src="<%= e.urlToImage %>" alt="" style="padding-bottom:10px;">
+      <img src="<%= e.urlToImage %>" alt="" style="padding-bottom:10px; width:80%;">
     <p class="card-text"><%= e.content %></p>
     <a href="<%= e.url %>>" class="btn btn-primary">Read More</a>
   </div>
 </div>
 <% }) %>
-<!-- <div class="card" style="margin-bottom: 2rem">
-  <div class="card-body">
-    <h5 class="card-title">Post Title</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aperiam maiores aliquid quibusdam quasi neque aliquam ut eius magnam nisi soluta doloribus corrupti obcaecati optio repellendus aut voluptatem, velit minus...</p>
-    <a href="#" class="btn btn-primary">Read More</a>
-  </div>
-</div>
-<div class="card" style="margin-bottom: 2rem">
-  <div class="card-body">
-    <h5 class="card-title">Post Title</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aperiam maiores aliquid quibusdam quasi neque aliquam ut eius magnam nisi soluta doloribus corrupti obcaecati optio repellendus aut voluptatem, velit minus...</p>
-    <a href="#" class="btn btn-primary">Read More</a>
-  </div>
-</div> -->
