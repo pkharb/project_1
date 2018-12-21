@@ -38,7 +38,10 @@ GITHUB LINK - https://github.com/pkharb/project_1
 
 To run it on your computer :
 
--  Open your terminal and go inside the api directory, enter 'npm run dev' to start the server. After that, type 'localhost:3000' in your browser and the index page will open
+-  Open your terminal and go inside the api directory
+-  Install npm packages 
+-  Enter 'npm run dev' to start the server. 
+-  After that, type'localhost:3000' in your browser and the index page will open
 
 
 
@@ -87,6 +90,6 @@ GOALS
 1) Page Title - Goals  
 2) Menu (options: Your Profile, Edit Profile, Delete Profile, Goals, Sign out)  
 3) Individual goals with detailed information about each goal  
-
+![Imgur](https://i.imgur.com/WhAIEqB.jpg)
 
 ![Imgur](https://i.imgur.com/4bL2LMs.png)
