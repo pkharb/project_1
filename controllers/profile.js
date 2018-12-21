@@ -13,7 +13,6 @@ module.exports = {
             if (err) res.json({ success: false , err});
                      res.json({ success: true, newProfile});
         });
-        
     },
     show: (req, res) => {
         Profile.findById(req.params.id, (err, profile) => {
@@ -21,7 +20,6 @@ module.exports = {
             if (err) res.json({ success: false , err});
                      res.json({ success: true, profile});
         });
-        
     },
     update: (req, res) => {
         Profile.findByIdAndUpdate(req.params.id, req.body, (err, updatedProfile) => {
