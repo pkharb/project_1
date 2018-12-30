@@ -29,17 +29,37 @@ usersRouter.post('/signup', passport.authenticate('local-signup', {
 // render the user profile only when user is logged in
 usersRouter.get('/profile', isLoggedIn, (req, res) => {
    let myArticles;
+   // dynamically set the last one week's articles
+   // dynamically set the last one week's articles
+   var today = new Date();
+   let startDate;
+   var dd = today.getDate();
+   var mm = today.getMonth()+1; //January is 0!
+   var yyyy = today.getFullYear();
+   if(dd<10) {
+       dd = '0'+dd
+   } 
+   if(mm<10) {
+       mm = '0'+mm
+   } 
+   today = yyyy + '-' + mm + '-' + dd;
+   let sd = dd - 20;
+   startDate = yyyy + '-' + mm + '-' + sd;
+   // sometime articles will retuen empty because in the given period
+   // there are no new articles on the selected topic, increase the range 
+   // and soem articles will be returned which will have content
     newsapi.v2.everything({
         q: 'bitcoin',
         sources: 'bbc-news,the-verge',
         domains: 'bbc.co.uk, techcrunch.com',
-        from: '2018-11-25',
-        to: '2018-12-19',
+        from: startDate,
+        to: today,
         language: 'en',
         sortBy: 'relevancy',
         page: 2,
         apiKey: 'd387655fed4f4541a7970fc4a8cc21f7'
       }).then(response => {
+          console.log(response);
           myArticles = response;
         res.render('profile', { user: req.user, myArticles});
     });
